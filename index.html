@@ -1,0 +1,1780 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Аренда яхты First Lady | Роскошные морские прогулки на Пхукете</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css">
+    <style>
+        /* Глобальные стили */
+        :root {
+            --primary-color: #0c3b5c;
+            --secondary-color: #1e88e5;
+            --accent-color: #ffd700;
+            --text-color: #333333;
+            --light-color: #ffffff;
+            --light-blue: #e3f2fd;
+            --gray-color: #f5f5f5;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Roboto', sans-serif;
+            color: var(--text-color);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+        
+        h1, h2, h3, h4, h5 {
+            font-family: 'Open Sans', sans-serif;
+            font-weight: 600;
+            margin-bottom: 1rem;
+        }
+        
+        h1 {
+            font-size: 2.5rem;
+        }
+        
+        h2 {
+            font-size: 2rem;
+            color: var(--primary-color);
+            position: relative;
+            padding-bottom: 15px;
+            margin-bottom: 30px;
+        }
+        
+        h2::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 60px;
+            height: 3px;
+            background-color: var(--accent-color);
+        }
+        
+        p {
+            margin-bottom: 1rem;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        .btn {
+            display: inline-block;
+            background-color: var(--secondary-color);
+            color: var(--light-color);
+            padding: 12px 25px;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            border: none;
+            cursor: pointer;
+            font-size: 1rem;
+        }
+        
+        .btn:hover {
+            background-color: var(--primary-color);
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+        
+        .btn-primary {
+            background-color: var(--primary-color);
+        }
+        
+        .btn-primary:hover {
+            background-color: var(--secondary-color);
+        }
+        
+        .btn-accent {
+            background-color: var(--accent-color);
+            color: var(--primary-color);
+        }
+        
+        .btn-accent:hover {
+            background-color: #e6c200;
+        }
+        
+        .section {
+            padding: 80px 0;
+        }
+        
+        .text-center {
+            text-align: center;
+        }
+        
+        .section-heading {
+            text-align: center;
+            margin-bottom: 50px;
+        }
+        
+        .section-heading h2::after {
+            left: 50%;
+            transform: translateX(-50%);
+        }
+        
+        /* Шапка */
+        header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            background-color: rgba(255, 255, 255, 0.95);
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            z-index: 1000;
+            transition: all 0.3s ease;
+        }
+        
+        header.scrolled {
+            padding: 10px 0;
+        }
+        
+        .header-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 20px;
+        }
+        
+        .logo {
+            display: flex;
+            align-items: center;
+        }
+        
+        .logo img {
+            max-height: 50px;
+            margin-right: 10px;
+        }
+        
+        .logo h1 {
+            font-size: 1.5rem;
+            margin-bottom: 0;
+            color: var(--primary-color);
+        }
+        
+        .nav-list {
+            display: flex;
+            list-style: none;
+        }
+        
+        .nav-list li {
+            margin-left: 30px;
+        }
+        
+        .nav-list a {
+            text-decoration: none;
+            color: var(--text-color);
+            font-weight: 500;
+            transition: color 0.3s ease;
+        }
+        
+        .nav-list a:hover {
+            color: var(--secondary-color);
+        }
+        
+        .menu-toggle {
+            display: none;
+            cursor: pointer;
+            font-size: 1.5rem;
+            color: var(--primary-color);
+        }
+        
+        /* Выбор языка */
+        .language-selector {
+            position: relative;
+            margin-left: 20px;
+        }
+        
+        .current-lang {
+            display: flex;
+            align-items: center;
+            cursor: pointer;
+        }
+        
+        .current-lang i {
+            margin-left: 5px;
+        }
+        
+        .lang-dropdown {
+            position: absolute;
+            top: 100%;
+            right: 0;
+            background-color: var(--light-color);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            border-radius: 5px;
+            min-width: 120px;
+            display: none;
+            z-index: 100;
+        }
+        
+        .lang-dropdown.active {
+            display: block;
+        }
+        
+        .lang-dropdown a {
+            display: block;
+            padding: 10px 15px;
+            text-decoration: none;
+            color: var(--text-color);
+            transition: all 0.3s ease;
+        }
+        
+        .lang-dropdown a:hover {
+            background-color: var(--light-blue);
+        }
+        
+        /* Главный экран */
+        .hero {
+            height: 100vh;
+            background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.3)), url('/api/placeholder/1920/1080');
+            background-size: cover;
+            background-position: center;
+            display: flex;
+            align-items: center;
+            color: var(--light-color);
+            position: relative;
+        }
+        
+        .hero-content {
+            max-width: 700px;
+        }
+        
+        .hero h1 {
+            font-size: 3.5rem;
+            text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.5);
+            margin-bottom: 1.5rem;
+        }
+        
+        .hero p {
+            font-size: 1.2rem;
+            margin-bottom: 2rem;
+            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
+        }
+        
+        .hero-buttons {
+            display: flex;
+            gap: 15px;
+        }
+        
+        /* О яхте */
+        .about {
+            background-color: var(--light-color);
+        }
+        
+        .about-content {
+            display: flex;
+            gap: 50px;
+            align-items: center;
+        }
+        
+        .about-image {
+            flex: 1;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+        
+        .about-image img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+        
+        .about-text {
+            flex: 1;
+        }
+        
+        .yacht-specs {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 15px;
+            margin-top: 30px;
+        }
+        
+        .spec-item {
+            display: flex;
+            align-items: center;
+        }
+        
+        .spec-icon {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background-color: var(--light-blue);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-right: 15px;
+            color: var(--primary-color);
+        }
+        
+        /* Услуги */
+        .services {
+            background-color: var(--gray-color);
+        }
+        
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+        
+        .service-card {
+            background-color: var(--light-color);
+            border-radius: 10px;
+            overflow: hidden;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+        }
+        
+        .service-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+        }
+        
+        .service-image {
+            height: 200px;
+            overflow: hidden;
+        }
+        
+        .service-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+        
+        .service-card:hover .service-image img {
+            transform: scale(1.05);
+        }
+        
+        .service-content {
+            padding: 20px;
+        }
+        
+        .service-content h3 {
+            color: var(--primary-color);
+            font-size: 1.5rem;
+            margin-bottom: 10px;
+        }
+        
+        /* Направления */
+        .destinations {
+            background-color: var(--light-color);
+        }
+        
+        .destinations-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+        }
+        
+        .destination-card {
+            position: relative;
+            height: 300px;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+        
+        .destination-image {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+        
+        .destination-card:hover .destination-image {
+            transform: scale(1.1);
+        }
+        
+        .destination-overlay {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            padding: 20px;
+            background: linear-gradient(transparent, rgba(0, 0, 0, 0.7));
+            color: var(--light-color);
+        }
+        
+        .destination-overlay h3 {
+            font-size: 1.3rem;
+            margin-bottom: 5px;
+        }
+        
+        /* Галерея */
+        .gallery {
+            background-color: var(--gray-color);
+        }
+        
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 15px;
+        }
+        
+        .gallery-item {
+            position: relative;
+            height: 250px;
+            border-radius: 5px;
+            overflow: hidden;
+            cursor: pointer;
+        }
+        
+        .gallery-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.3s ease;
+        }
+        
+        .gallery-item:hover img {
+            transform: scale(1.05);
+        }
+        
+        .gallery-lightbox {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.9);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 2000;
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 0.3s ease;
+        }
+        
+        .gallery-lightbox.active {
+            opacity: 1;
+            pointer-events: all;
+        }
+        
+        .lightbox-content {
+            max-width: 80%;
+            max-height: 80%;
+            position: relative;
+        }
+        
+        .lightbox-image {
+            max-width: 100%;
+            max-height: 80vh;
+            border-radius: 5px;
+        }
+        
+        .lightbox-close {
+            position: absolute;
+            top: -40px;
+            right: 0;
+            color: var(--light-color);
+            font-size: 2rem;
+            cursor: pointer;
+        }
+        
+        .lightbox-nav {
+            position: absolute;
+            top: 50%;
+            width: 100%;
+            display: flex;
+            justify-content: space-between;
+            transform: translateY(-50%);
+        }
+        
+        .lightbox-nav button {
+            background: transparent;
+            border: none;
+            color: var(--light-color);
+            font-size: 2rem;
+            cursor: pointer;
+            padding: 10px;
+            margin: 0 20px;
+        }
+        
+        /* Отзывы */
+        .testimonials {
+            background-color: var(--light-color);
+        }
+        
+        .testimonial-slider {
+            max-width: 800px;
+            margin: 0 auto;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .testimonial-slides {
+            display: flex;
+            transition: transform 0.5s ease;
+        }
+        
+        .testimonial-slide {
+            min-width: 100%;
+            padding: 20px;
+            box-sizing: border-box;
+        }
+        
+        .testimonial-card {
+            background-color: var(--gray-color);
+            padding: 30px;
+            border-radius: 10px;
+            text-align: center;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+        }
+        
+        .client-image {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            object-fit: cover;
+            margin: 0 auto 20px;
+            border: 3px solid var(--accent-color);
+        }
+        
+        .client-name {
+            margin-top: 15px;
+            font-weight: 600;
+            color: var(--primary-color);
+        }
+        
+        .client-location {
+            color: var(--secondary-color);
+            font-size: 0.9rem;
+        }
+        
+        .testimonial-dots {
+            display: flex;
+            justify-content: center;
+            margin-top: 30px;
+        }
+        
+        .dot {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background-color: #ddd;
+            margin: 0 5px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+        
+        .dot.active {
+            background-color: var(--secondary-color);
+        }
+        
+        /* Цены */
+        .pricing {
+            background-color: var(--gray-color);
+        }
+        
+        .pricing-container {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 30px;
+        }
+        
+        .pricing-card {
+            background-color: var(--light-color);
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            flex: 1;
+            min-width: 280px;
+            max-width: 350px;
+        }
+        
+        .pricing-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+        }
+        
+        .pricing-header {
+            background-color: var(--primary-color);
+            color: var(--light-color);
+            padding: 20px;
+            text-align: center;
+        }
+        
+        .pricing-header h3 {
+            margin-bottom: 5px;
+        }
+        
+        .price {
+            font-size: 2rem;
+            font-weight: 600;
+        }
+        
+        .pricing-features {
+            padding: 20px;
+        }
+        
+        .pricing-features ul {
+            list-style: none;
+            margin-bottom: 20px;
+        }
+        
+        .pricing-features li {
+            padding: 10px 0;
+            border-bottom: 1px solid #eee;
+        }
+        
+        .pricing-features li:last-child {
+            border-bottom: none;
+        }
+        
+        .pricing-features i {
+            color: var(--secondary-color);
+            margin-right: 10px;
+        }
+        
+        .pricing-features .btn {
+            display: block;
+            text-align: center;
+            margin: 20px auto 0;
+        }
+        
+        /* Бронирование */
+        .booking {
+            background-color: var(--light-blue);
+        }
+        
+        .booking-form {
+            max-width: 800px;
+            margin: 0 auto;
+            background-color: var(--light-color);
+            padding: 40px;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+        
+        .form-group {
+            margin-bottom: 20px;
+        }
+        
+        .form-group label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: 500;
+        }
+        
+        .form-control {
+            width: 100%;
+            padding: 12px 15px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            font-size: 1rem;
+            transition: border-color 0.3s ease;
+        }
+        
+        .form-control:focus {
+            outline: none;
+            border-color: var(--secondary-color);
+        }
+        
+        .form-row {
+            display: flex;
+            gap: 20px;
+        }
+        
+        .form-row .form-group {
+            flex: 1;
+        }
+        
+        textarea.form-control {
+            resize: vertical;
+            min-height: 120px;
+        }
+        
+        /* Контакты */
+        .contact {
+            background-color: var(--light-color);
+        }
+        
+        .contact-container {
+            display: flex;
+            gap: 50px;
+        }
+        
+        .contact-info {
+            flex: 1;
+        }
+        
+        .contact-item {
+            display: flex;
+            align-items: flex-start;
+            margin-bottom: 20px;
+        }
+        
+        .contact-icon {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background-color: var(--light-blue);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-right: 15px;
+            color: var(--primary-color);
+        }
+        
+        .map {
+            flex: 1;
+            height: 400px;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+        
+        .map iframe {
+            width: 100%;
+            height: 100%;
+            border: none;
+        }
+        
+        .social-media {
+            display: flex;
+            gap: 15px;
+            margin-top: 30px;
+        }
+        
+        .social-link {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background-color: var(--primary-color);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--light-color);
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+        
+        .social-link:hover {
+            background-color: var(--secondary-color);
+            transform: translateY(-3px);
+        }
+        
+        /* Подвал */
+        footer {
+            background-color: var(--primary-color);
+            color: var(--light-color);
+            padding: 50px 0 20px;
+        }
+        
+        .footer-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 30px;
+        }
+        
+        .footer-column {
+            flex: 1;
+            min-width: 200px;
+        }
+        
+        .footer-column h3 {
+            font-size: 1.2rem;
+            margin-bottom: 20px;
+        }
+        
+        .footer-column ul {
+            list-style: none;
+        }
+        
+        .footer-column ul li {
+            margin-bottom: 10px;
+        }
+        
+        .footer-column a {
+            color: #b0c9e1;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+        
+        .footer-column a:hover {
+            color: var(--light-color);
+        }
+        
+        .footer-bottom {
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            margin-top: 30px;
+            padding-top: 20px;
+            text-align: center;
+            font-size: 0.9rem;
+        }
+        
+        /* Медиа запросы */
+        @media (max-width: 992px) {
+            .nav-list {
+                display: none;
+                position: absolute;
+                top: 100%;
+                left: 0;
+                width: 100%;
+                background-color: var(--light-color);
+                flex-direction: column;
+                box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+                padding: 20px 0;
+            }
+            
+            .nav-list.active {
+                display: flex;
+            }
+            
+            .nav-list li {
+                margin: 0;
+                text-align: center;
+            }
+            
+            .nav-list a {
+                display: block;
+                padding: 12px 20px;
+            }
+            
+            .menu-toggle {
+                display: block;
+            }
+            
+            .about-content {
+                flex-direction: column;
+            }
+            
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+            
+            .contact-container {
+                flex-direction: column;
+            }
+            
+            .form-row {
+                flex-direction: column;
+                gap: 0;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 2rem;
+            }
+            
+            h2 {
+                font-size: 1.8rem;
+            }
+            
+            .section {
+                padding: 60px 0;
+            }
+            
+            .hero {
+                height: 80vh;
+            }
+        }
+        
+        @media (max-width: 576px) {
+            .service-card,
+            .pricing-card {
+                min-width: 100%;
+            }
+            
+            .hero h1 {
+                font-size: 2rem;
+            }
+            
+            .gallery-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .booking-form {
+                padding: 20px;
+            }
+        }
+        
+        /* Анимации */
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+        
+        .animate-fadeIn {
+            animation: fadeIn 1s ease forwards;
+        }
+        
+        @keyframes slideUp {
+            from { transform: translateY(50px); opacity: 0; }
+            to { transform: translateY(0); opacity: 1; }
+        }
+        
+        .animate-slideUp {
+            animation: slideUp 0.8s ease forwards;
+        }
+    </style>
+</head>
+<body>
+    <!-- Шапка -->
+    <header>
+        <div class="container header-container">
+            <div class="logo">
+                <img src="/api/placeholder/50/50" alt="First Lady Logo">
+                <h1>First Lady</h1>
+            </div>
+            
+            <div class="menu-toggle" id="menuToggle">
+                <i class="fas fa-bars"></i>
+            </div>
+            
+            <ul class="nav-list" id="navList">
+                <li><a href="#about">О яхте</a></li>
+                <li><a href="#services">Услуги</a></li>
+                <li><a href="#destinations">Направления</a></li>
+                <li><a href="#gallery">Галерея</a></li>
+                <li><a href="#pricing">Цены</a></li>
+                <li><a href="#booking">Бронирование</a></li>
+                <li><a href="#contact">Контакты</a></li>
+                <li class="language-selector">
+                    <div class="current-lang" id="currentLang">
+                        <span>RU</span>
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="lang-dropdown" id="langDropdown">
+                        <a href="#" data-lang="ru" class="active">Русский</a>
+                        <a href="#" data-lang="en">English</a>
+                        <a href="#" data-lang="zh">中文</a>
+                    </div>
+                </li>
+            </ul>
+        </div>
+    </header>
+    
+    <!-- Главный экран -->
+    <section class="hero">
+        <div class="container">
+            <div class="hero-content animate-fadeIn">
+                <h1>Аренда яхты First Lady на Пхукете</h1>
+                <p>Откройте для себя уникальные красоты Андаманского моря на борту комфортабельной 15-метровой моторной яхты</p>
+                <div class="hero-buttons">
+                    <a href="#booking" class="btn btn-accent">Забронировать сейчас</a>
+                    <a href="#about" class="btn">Узнать больше</a>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- О яхте -->
+    <section id="about" class="section about">
+        <div class="container">
+            <div class="section-heading">
+                <h2>О яхте First Lady</h2>
+                <p>15-метровая моторная яхта для идеального отдыха на море</p>
+            </div>
+            
+            <div class="about-content">
+                <div class="about-image animate-fadeIn">
+                    <img src="/api/placeholder/600/400" alt="Яхта First Lady">
+                </div>
+                
+                <div class="about-text animate-slideUp">
+                    <p>First Lady — роскошная 15-метровая моторная яхта, идеально подходящая для частных морских прогулок и чартеров вокруг Пхукета. Созданная для комфортного отдыха на воде, наша яхта предлагает просторную палубу для принятия солнечных ванн, комфортабельную каюту и все необходимое оборудование для безопасного и приятного путешествия.</p>
+                    
+                    <p>Мы предлагаем индивидуальный подход к каждому клиенту, обеспечивая комфорт, безопасность и незабываемые впечатления от путешествий по Андаманскому морю.</p>
+                    
+                    <div class="yacht-specs">
+                        <div class="spec-item">
+                            <div class="spec-icon">
+                                <i class="fas fa-ruler"></i>
+                            </div>
+                            <div>
+                                <h4>Длина</h4>
+                                <p>15 метров</p>
+                            </div>
+                        </div>
+                        <div class="spec-item">
+                            <div class="spec-icon">
+                                <i class="fas fa-users"></i>
+                            </div>
+                            <div>
+                                <h4>Вместимость</h4>
+                                <p>До 12 гостей</p>
+                            </div>
+                        </div>
+                        <div class="spec-item">
+                            <div class="spec-icon">
+                                <i class="fas fa-bed"></i>
+                            </div>
+                            <div>
+                                <h4>Каюты</h4>
+                                <p>2 каюты</p>
+                            </div>
+                        </div>
+                        <div class="spec-item">
+                            <div class="spec-icon">
+                                <i class="fas fa-tachometer-alt"></i>
+                            </div>
+                            <div>
+                                <h4>Скорость</h4>
+                <p>25 узлов</p>
+            </div>
+        </div>
+        <div class="spec-item">
+            <div class="spec-icon">
+                <i class="fas fa-ship"></i>
+            </div>
+            <div>
+                <h4>Тип</h4>
+                <p>Моторная яхта</p>
+            </div>
+        </div>
+        <div class="spec-item">
+            <div class="spec-icon">
+                <i class="fas fa-life-ring"></i>
+            </div>
+            <div>
+                <h4>Экипаж</h4>
+                <p>Капитан + 2 человека</p>
+            </div>
+        </div>
+    </div>
+</div>
+</div>
+</div>
+</section>
+
+<!-- Услуги -->
+<section id="services" class="section services">
+    <div class="container">
+        <div class="section-heading">
+            <h2>Наши услуги</h2>
+            <p>Выберите идеальный вариант морского путешествия</p>
+        </div>
+        
+        <div class="services-grid">
+            <div class="service-card animate-fadeIn">
+                <div class="service-image">
+                    <img src="/api/placeholder/400/250" alt="Морская прогулка">
+                </div>
+                <div class="service-content">
+                    <h3>Индивидуальные морские прогулки</h3>
+                    <p>Частные морские прогулки с возможностью самостоятельно выбрать маршрут и время отдыха на каждом из островов.</p>
+                    <a href="#booking" class="btn btn-primary">Забронировать</a>
+                </div>
+            </div>
+            
+            <div class="service-card animate-fadeIn">
+                <div class="service-image">
+                    <img src="/api/placeholder/400/250" alt="Полудневная аренда">
+                </div>
+                <div class="service-content">
+                    <h3>Полудневные чартеры</h3>
+                    <p>Идеальный вариант для тех, кто хочет посетить ближайшие острова и насладиться морской прогулкой в течение 4-5 часов.</p>
+                    <a href="#booking" class="btn btn-primary">Забронировать</a>
+                </div>
+            </div>
+            
+            <div class="service-card animate-fadeIn">
+                <div class="service-image">
+                    <img src="/api/placeholder/400/250" alt="Дневная аренда">
+                </div>
+                <div class="service-content">
+                    <h3>Дневные чартеры</h3>
+                    <p>Полный день на яхте с посещением нескольких островов, обедом на борту и возможностью заняться снорклингом и рыбалкой.</p>
+                    <a href="#booking" class="btn btn-primary">Забронировать</a>
+                </div>
+            </div>
+            
+            <div class="service-card animate-fadeIn">
+                <div class="service-image">
+                    <img src="/api/placeholder/400/250" alt="Многодневное путешествие">
+                </div>
+                <div class="service-content">
+                    <h3>Многодневные путешествия</h3>
+                    <p>Захватывающие круизы с ночёвкой на борту яхты. Исследуйте отдаленные острова и наслаждайтесь звездным небом над морем.</p>
+                    <a href="#booking" class="btn btn-primary">Забронировать</a>
+                </div>
+            </div>
+            
+            <div class="service-card animate-fadeIn">
+                <div class="service-image">
+                    <img src="/api/placeholder/400/250" alt="Романтический ужин">
+                </div>
+                <div class="service-content">
+                    <h3>Романтические ужины</h3>
+                    <p>Идеальный вечер для влюбленных: закат, море, ужин при свечах и романтическая атмосфера на борту яхты.</p>
+                    <a href="#booking" class="btn btn-primary">Забронировать</a>
+                </div>
+            </div>
+            
+            <div class="service-card animate-fadeIn">
+                <div class="service-image">
+                    <img src="/api/placeholder/400/250" alt="Празднование особых событий">
+                </div>
+                <div class="service-content">
+                    <h3>Организация мероприятий</h3>
+                    <p>Празднование дней рождения, годовщин, корпоративных мероприятий и других особых событий на борту яхты.</p>
+                    <a href="#booking" class="btn btn-primary">Забронировать</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Направления -->
+<section id="destinations" class="section destinations">
+    <div class="container">
+        <div class="section-heading">
+            <h2>Популярные направления</h2>
+            <p>Исследуйте красоту островов Андаманского моря</p>
+        </div>
+        
+        <div class="destinations-grid">
+            <div class="destination-card">
+                <img src="/api/placeholder/400/300" alt="Остров Пхи-Пхи" class="destination-image">
+                <div class="destination-overlay">
+                    <h3>Острова Пхи-Пхи</h3>
+                    <p>Знаменитые живописные острова с лазурной водой и белоснежными пляжами</p>
+                </div>
+            </div>
+            
+            <div class="destination-card">
+                <img src="/api/placeholder/400/300" alt="Острова Рача" class="destination-image">
+                <div class="destination-overlay">
+                    <h3>Острова Рача</h3>
+                    <p>Идеальное место для снорклинга с кристально чистой водой и коралловыми рифами</p>
+                </div>
+            </div>
+            
+            <div class="destination-card">
+                <img src="/api/placeholder/400/300" alt="Остров Джеймса Бонда" class="destination-image">
+                <div class="destination-overlay">
+                    <h3>Остров Джеймса Бонда</h3>
+                    <p>Известный по фильму "Человек с золотым пистолетом" остров с уникальными известняковыми формациями</p>
+                </div>
+            </div>
+            
+            <div class="destination-card">
+                <img src="/api/placeholder/400/300" alt="Залив Пханг Нга" class="destination-image">
+                <div class="destination-overlay">
+                    <h3>Залив Пханг Нга</h3>
+                    <p>Живописный залив с известняковыми скалами, бухтами и пещерами</p>
+                </div>
+            </div>
+            
+            <div class="destination-card">
+                <img src="/api/placeholder/400/300" alt="Остров Майтон" class="destination-image">
+                <div class="destination-overlay">
+                    <h3>Остров Майтон</h3>
+                    <p>Уединенный частный остров с возможностью наблюдения за дельфинами</p>
+                </div>
+            </div>
+            
+            <div class="destination-card">
+                <img src="/api/placeholder/400/300" alt="Коралловый остров" class="destination-image">
+                <div class="destination-overlay">
+                    <h3>Коралловый остров</h3>
+                    <p>Небольшой остров с богатым подводным миром и красивыми коралловыми садами</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Галерея -->
+<section id="gallery" class="section gallery">
+    <div class="container">
+        <div class="section-heading">
+            <h2>Галерея</h2>
+            <p>Взгляните на яхту First Lady и впечатляющие морские пейзажи</p>
+        </div>
+        
+        <div class="gallery-grid">
+            <div class="gallery-item" data-index="0">
+                <img src="/api/placeholder/400/300" alt="Яхта First Lady на закате">
+            </div>
+            <div class="gallery-item" data-index="1">
+                <img src="/api/placeholder/400/300" alt="Интерьер яхты">
+            </div>
+            <div class="gallery-item" data-index="2">
+                <img src="/api/placeholder/400/300" alt="Палуба яхты">
+            </div>
+            <div class="gallery-item" data-index="3">
+                <img src="/api/placeholder/400/300" alt="Купание в открытом море">
+            </div>
+            <div class="gallery-item" data-index="4">
+                <img src="/api/placeholder/400/300" alt="Обед на борту">
+            </div>
+            <div class="gallery-item" data-index="5">
+                <img src="/api/placeholder/400/300" alt="Красивый пляж">
+            </div>
+            <div class="gallery-item" data-index="6">
+                <img src="/api/placeholder/400/300" alt="Снорклинг у островов">
+            </div>
+            <div class="gallery-item" data-index="7">
+                <img src="/api/placeholder/400/300" alt="Закат на яхте">
+            </div>
+        </div>
+    </div>
+    
+    <div class="gallery-lightbox" id="galleryLightbox">
+        <div class="lightbox-content">
+            <img src="" alt="" class="lightbox-image" id="lightboxImage">
+            <span class="lightbox-close" id="lightboxClose"><i class="fas fa-times"></i></span>
+            <div class="lightbox-nav">
+                <button id="prevButton"><i class="fas fa-chevron-left"></i></button>
+                <button id="nextButton"><i class="fas fa-chevron-right"></i></button>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Отзывы -->
+<section class="section testimonials">
+    <div class="container">
+        <div class="section-heading">
+            <h2>Что говорят наши клиенты</h2>
+            <p>Отзывы о морских приключениях на яхте First Lady</p>
+        </div>
+        
+        <div class="testimonial-slider">
+            <div class="testimonial-slides" id="testimonialSlides">
+                <div class="testimonial-slide">
+                    <div class="testimonial-card">
+                        <img src="/api/placeholder/80/80" alt="Александр" class="client-image">
+                        <p>"Незабываемое путешествие! Яхта First Lady прекрасно оборудована, капитан отлично знает все лучшие места, а персонал невероятно внимателен к деталям. Мы провели потрясающий день на островах Пхи-Пхи."</p>
+                        <div class="client-name">Александр</div>
+                        <div class="client-location">Москва, Россия</div>
+                    </div>
+                </div>
+                
+                <div class="testimonial-slide">
+                    <div class="testimonial-card">
+                        <img src="/api/placeholder/80/80" alt="Елена и Виктор" class="client-image">
+                        <p>"Мы организовали романтический ужин на закате на борту First Lady. Это было просто волшебно! Прекрасный сервис, внимательная команда и, конечно, потрясающие виды. Настоятельно рекомендуем!"</p>
+                        <div class="client-name">Елена и Виктор</div>
+                        <div class="client-location">Санкт-Петербург, Россия</div>
+                    </div>
+                </div>
+                
+                <div class="testimonial-slide">
+                    <div class="testimonial-card">
+                        <img src="/api/placeholder/80/80" alt="Zhang Wei" class="client-image">
+                        <p>"Отличная яхта и команда! Мы арендовали First Lady на два дня и посетили несколько островов. Все было организовано на высшем уровне, от вкусной еды до мест для снорклинга. Спасибо за прекрасный отдых!"</p>
+                        <div class="client-name">Чжан Вэй</div>
+                        <div class="client-location">Шанхай, Китай</div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="testimonial-dots" id="testimonialDots">
+                <span class="dot active" data-index="0"></span>
+                <span class="dot" data-index="1"></span>
+                <span class="dot" data-index="2"></span>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Цены -->
+<section id="pricing" class="section pricing">
+    <div class="container">
+        <div class="section-heading">
+            <h2>Прозрачные цены</h2>
+            <p>Выберите оптимальный вариант аренды яхты First Lady</p>
+        </div>
+        
+        <div class="pricing-container">
+            <div class="pricing-card">
+                <div class="pricing-header">
+                    <h3>Полдня (4 часа)</h3>
+                    <div class="price">39,000 ฿</div>
+                </div>
+                <div class="pricing-features">
+                    <ul>
+                        <li><i class="fas fa-check"></i> Аренда яхты на 4 часа</li>
+                        <li><i class="fas fa-check"></i> Профессиональный экипаж</li>
+                        <li><i class="fas fa-check"></i> Безалкогольные напитки</li>
+                        <li><i class="fas fa-check"></i> Легкие закуски</li>
+                        <li><i class="fas fa-check"></i> Снаряжение для снорклинга</li>
+                        <li><i class="fas fa-check"></i> Страховка</li>
+                    </ul>
+                    <a href="#booking" class="btn btn-primary">Забронировать</a>
+                </div>
+            </div>
+            
+            <div class="pricing-card">
+                <div class="pricing-header">
+                    <h3>Полный день (8 часов)</h3>
+                    <div class="price">65,000 ฿</div>
+                </div>
+                <div class="pricing-features">
+                    <ul>
+                        <li><i class="fas fa-check"></i> Аренда яхты на 8 часов</li>
+                        <li><i class="fas fa-check"></i> Профессиональный экипаж</li>
+                        <li><i class="fas fa-check"></i> Напитки (вкл. алкогольные)</li>
+                        <li><i class="fas fa-check"></i> Обед на борту</li>
+                        <li><i class="fas fa-check"></i> Снаряжение для снорклинга</li>
+                        <li><i class="fas fa-check"></i> Полотенца и средства защиты от солнца</li>
+                        <li><i class="fas fa-check"></i> Страховка</li>
+                    </ul>
+                    <a href="#booking" class="btn btn-primary">Забронировать</a>
+                </div>
+            </div>
+            
+            <div class="pricing-card">
+                <div class="pricing-header">
+                    <h3>Ночной чартер (24 часа)</h3>
+                    <div class="price">120,000 ฿</div>
+                </div>
+                <div class="pricing-features">
+                    <ul>
+                        <li><i class="fas fa-check"></i> Аренда яхты на 24 часа</li>
+                        <li><i class="fas fa-check"></i> Профессиональный экипаж</li>
+                        <li><i class="fas fa-check"></i> Все напитки включены</li>
+                        <li><i class="fas fa-check"></i> Завтрак, обед и ужин</li>
+                        <li><i class="fas fa-check"></i> Снаряжение для снорклинга и рыбалки</li>
+                        <li><i class="fas fa-check"></i> Ночлег в каютах (до 4 гостей)</li>
+                        <li><i class="fas fa-check"></i> Полотенца и средства защиты от солнца</li>
+                        <li><i class="fas fa-check"></i> Расширенная страховка</li>
+                    </ul>
+                    <a href="#booking" class="btn btn-primary">Забронировать</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Бронирование -->
+<section id="booking" class="section booking">
+    <div class="container">
+        <div class="section-heading">
+            <h2>Забронировать яхту</h2>
+            <p>Заполните форму, и мы свяжемся с вами для подтверждения бронирования</p>
+        </div>
+        
+        <div class="booking-form">
+            <form id="bookingForm">
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="name">Ваше имя*</label>
+                        <input type="text" id="name" class="form-control" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="email">Email*</label>
+                        <input type="email" id="email" class="form-control" required>
+                    </div>
+                </div>
+                
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="phone">Телефон*</label>
+                        <input type="tel" id="phone" class="form-control" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="date">Предпочтительная дата*</label>
+                        <input type="date" id="date" class="form-control" required>
+                    </div>
+                </div>
+                
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="guests">Количество гостей*</label>
+                        <select id="guests" class="form-control" required>
+                            <option value="">Выберите...</option>
+                            <option value="1-2">1-2 гостя</option>
+                            <option value="3-4">3-4 гостя</option>
+                            <option value="5-6">5-6 гостей</option>
+                            <option value="7-8">7-8 гостей</option>
+                            <option value="9-12">9-12 гостей</option>
+                        </select>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="package">Выберите пакет*</label>
+                        <select id="package" class="form-control" required>
+                            <option value="">Выберите...</option>
+                            <option value="half-day">Полдня (4 часа)</option>
+                            <option value="full-day">Полный день (8 часов)</option>
+                            <option value="overnight">Ночной чартер (24 часа)</option>
+                            <option value="custom">Индивидуальный запрос</option>
+                        </select>
+                    </div>
+                </div>
+                
+                <div class="form-group">
+                    <label for="message">Дополнительные пожелания</label>
+                    <textarea id="message" class="form-control"></textarea>
+                </div>
+                
+                <button type="submit" class="btn btn-accent">Отправить запрос</button>
+            </form>
+        </div>
+    </div>
+</section>
+
+<!-- Контакты -->
+<section id="contact" class="section contact">
+    <div class="container">
+        <div class="section-heading">
+            <h2>Свяжитесь с нами</h2>
+            <p>Готовы отправиться в незабываемое морское путешествие?</p>
+        </div>
+        
+        <div class="contact-container">
+            <div class="contact-info">
+                <div class="contact-item">
+                    <div class="contact-icon">
+                        <i class="fas fa-map-marker-alt"></i>
+                    </div>
+                    <div>
+                        <h3>Наш офис</h3>
+                        <p>Пхукет, Таиланд<br>Яхт-клуб Ао По Гранд Марина</p>
+                    </div>
+                </div>
+                
+                <div class="contact-item">
+                    <div class="contact-icon">
+                        <i class="fas fa-phone"></i>
+                    </div>
+                    <div>
+                        <h3>Телефон</h3>
+                        <p>+66 94 123 4567</p>
+                    </div>
+                </div>
+                
+                <div class="contact-item">
+                    <div class="contact-icon">
+                        <i class="fas fa-envelope"></i>
+                    </div>
+                    <div>
+                        <h3>Email</h3>
+                        <p>info@firstladyyacht.com</p>
+                    </div>
+                </div>
+                
+                <div class="contact-item">
+                    <div class="contact-icon">
+                        <i class="fas fa-clock"></i>
+                    </div>
+                    <div>
+                        <h3>Часы работы</h3>
+                        <p>Ежедневно: 9:00 - 20:00</p>
+                    </div>
+                </div>
+                
+                <div class="social-media">
+                    <a href="#" class="social-link"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#" class="social-link"><i class="fab fa-instagram"></i></a>
+                    <a href="#" class="social-link"><i class="fab fa-whatsapp"></i></a>
+                    <a href="#" class="social-link"><i class="fab fa-telegram"></i></a>
+                </div>
+            </div>
+            
+            <div class="map">
+                <!-- Здесь была бы настоящая карта Google Maps с координатами яхт-клуба -->
+                <img src="/api/placeholder/600/400" alt="Карта расположения">
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Подвал -->
+<footer>
+    <div class="container footer-container">
+        <div class="footer-column">
+            <h3>First Lady Yacht</h3>
+            <p>Роскошные морские прогулки и чартеры в водах Пхукета на комфортабельной моторной яхте.</p>
+        </div>
+        
+        <div class="footer-column">
+            <h3>Навигация</h3>
+            <ul>
+                <li><a href="#about">О яхте</a></li>
+                <li><a href="#services">Услуги</a></li>
+                <li><a href="#destinations">Направления</a></li>
+                <li><a href="#gallery">Галерея</a></li>
+                <li><a href="#pricing">Цены</a></li>
+                <li><a href="#booking">Бронирование</a></li>
+            </ul>
+        </div>
+        
+        <div class="footer-column">
+            <h3>Полезные ссылки</h3>
+            <ul>
+                <li><a href="#">Часто задаваемые вопросы</a></li>
+                <li><a href="#">Условия бронирования</a></li>
+                <li><a href="#">Политика конфиденциальности</a></li>
+                <li><a href="#">О Пхукете</a></li>
+                <li><a href="#">Блог</a></li>
+            </ul>
+        </div>
+        
+        <div class="footer-column">
+            <h3>Подписаться на новости</h3>
+            <p>Получайте специальные предложения и новости на свой email</p>
+            <form class="newsletter-form">
+                <input type="email" placeholder="Ваш email" class="form-control" style="margin-bottom: 10px;">
+                <button type="submit" class="btn btn-accent">Подписаться</button>
+            </form>
+        </div>
+    </div>
+    
+    <div class="container footer-bottom">
+        <p>&copy; 2025 First Lady Yacht. Все права защищены.</p>
+    </div>
+</footer>
+
+<!-- Скрипты -->
+<script>
+    // Фиксированное меню при прокрутке
+    window.addEventListener('scroll', function() {
+        const header = document.querySelector('header');
+        if (window.scrollY > 50) {
+            header.classList.add('scrolled');
+        } else {
+            header.classList.remove('scrolled');
+        }
+    });
+    
+    // Мобильное меню
+    document.getElementById('menuToggle').addEventListener('click', function() {
+        document.getElementById('navList').classList.toggle('active');
+    });
+    
+    // Плавная прокрутка к якорям
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener('click', function(e) {
+            e.preventDefault();
+            
+            const target = document.querySelector(this.getAttribute('href'));
+            
+            if (target) {
+                window.scrollTo({
+                    top: target.offsetTop - 80,
+                    behavior: 'smooth'
+                });
+                
+                // Закрыть мобильное меню после клика по ссылке
+                document.getElementById('navList').classList.remove('active');
+            }
+        });
+    });
+    
+    // Переключатель языков
+    document.getElementById('currentLang').addEventListener('click', function() {
+        document.getElementById('langDropdown').classList.toggle('active');
+    });
+    
+    document.querySelectorAll('#langDropdown a').forEach(link => {
+        link.addEventListener('click', function(e) {
+            e.preventDefault();
+            
+            // Здесь была бы логика переключения языка
+            document.querySelectorAll('#langDropdown a').forEach(item => {
+                item.classList.remove('active');
+            });
+            
+            this.classList.add('active');
+            document.querySelector('#currentLang span').textContent = this.textContent.trim().substring(0, 2).toUpperCase();
+            document.getElementById('langDropdown').classList.remove('active');
+        });
+    });
+    
+    // Анимация появления элементов при прокрутке
+    const animateElements = document.querySelectorAll('.animate-fadeIn, .animate-slideUp');
+    
+    function checkIfInView() {
+        const windowHeight = window.innerHeight;
+        const windowTopPosition = window.scrollY;
+        const windowBottomPosition = windowTopPosition + windowHeight;
+        
+        animateElements.forEach(element => {
+            const elementHeight = element.offsetHeight;
+            const elementTopPosition = element.offsetTop;
+            const elementBottomPosition = elementTopPosition + elementHeight;
+            
+            if (
+                (elementBottomPosition >= windowTopPosition) &&
+                (elementTopPosition <= windowBottomPosition)
+            ) {
+                element.style.opacity = '1';
+                element.style.transform = 'translateY(0)';
+            }
+        });
+    }
+    
+    window.addEventListener('scroll', checkIfInView);
+    window.addEventListener('load', checkIfInView);
+    
+    // Галерея
+    const galleryItems = document.querySelectorAll('.gallery-item');
+    const lightbox = document.getElementById('galleryLightbox');
+    const lightboxImage = document.getElementById('lightboxImage');
+    const lightboxClose = document.getElementById('lightboxClose');
+    const prevButton = document.getElementById('prevButton');
+    const nextButton = document.getElementById('nextButton');
+    let currentIndex = 0;
+    
+    galleryItems.forEach(item => {
+        item.addEventListener('click', function() {
+            currentIndex = parseInt(this.dataset.index);
+            const imgSrc = this.querySelector('img').src;
+            const imgAlt = this.querySelector('img').alt;
+            
+            lightboxImage.src = imgSrc;
+            lightboxImage.alt = imgAlt;
+            lightbox.classList.add('active');
+            document.body.style.overflow = 'hidden';
+        });
+    });
+    
+    lightboxClose.addEventListener('click', function() {
+        lightbox.classList.remove('active');
+        document.body.style.overflow = 'auto';
+    });
+    
+    prevButton.addEventListener('click', function() {
+        currentIndex = (currentIndex === 0) ? galleryItems.length - 1 : currentIndex - 1;
+        const imgSrc = document.querySelector(`.gallery-item[data-index="${currentIndex}"] img`).src;
+        const imgAlt = document.querySelector(`.gallery-item[data-index="${currentIndex}"] img`).alt;
+        
+        lightboxImage.src = imgSrc;
+        lightboxImage.alt = imgAlt;
+    });
+    
+// This completes the script that was cut off in the original document
+
+nextButton.addEventListener('click', function() {
+    currentIndex = (currentIndex === galleryItems.length - 1) ? 0 : currentIndex + 1;
+    const imgSrc = document.querySelector(`.gallery-item[data-index="${currentIndex}"] img`).src;
+    const imgAlt = document.querySelector(`.gallery-item[data-index="${currentIndex}"] img`).alt;
+    
+    lightboxImage.src = imgSrc;
+    lightboxImage.alt = imgAlt;
+});
+
+// Close lightbox when clicking outside the image
+lightbox.addEventListener('click', function(e) {
+    if (e.target === lightbox) {
+        lightbox.classList.remove('active');
+        document.body.style.overflow = 'auto';
+    }
+});
+
+// Keyboard navigation for lightbox
+document.addEventListener('keydown', function(e) {
+    if (!lightbox.classList.contains('active')) return;
+    
+    if (e.key === 'Escape') {
+        lightbox.classList.remove('active');
+        document.body.style.overflow = 'auto';
+    } else if (e.key === 'ArrowLeft') {
+        prevButton.click();
+    } else if (e.key === 'ArrowRight') {
+        nextButton.click();
+    }
+});
+
+// Testimonials slider
+const testimonialSlides = document.getElementById('testimonialSlides');
+const dots = document.querySelectorAll('#testimonialDots .dot');
+let testimonialIndex = 0;
+
+function showTestimonial(index) {
+    testimonialSlides.style.transform = `translateX(-${index * 100}%)`;
+    
+    dots.forEach(dot => {
+        dot.classList.remove('active');
+    });
+    
+    dots[index].classList.add('active');
+    testimonialIndex = index;
+}
+
+dots.forEach(dot => {
+    dot.addEventListener('click', function() {
+        const index = parseInt(this.dataset.index);
+        showTestimonial(index);
+    });
+});
+
+// Auto-rotate testimonials
+setInterval(() => {
+    testimonialIndex = (testimonialIndex === dots.length - 1) ? 0 : testimonialIndex + 1;
+    showTestimonial(testimonialIndex);
+}, 5000);
+
+// Form submission handler
+document.getElementById('bookingForm').addEventListener('submit', function(e) {
+    e.preventDefault();
+    
+    // In a real application, you would send the form data to a server here
+    const formData = {
+        name: document.getElementById('name').value,
+        email: document.getElementById('email').value,
+        phone: document.getElementById('phone').value,
+        date: document.getElementById('date').value,
+        guests: document.getElementById('guests').value,
+        package: document.getElementById('package').value,
+        message: document.getElementById('message').value
+    };
+    
+    // For demonstration, just show an alert
+    alert('Спасибо за ваш запрос! Мы свяжемся с вами в ближайшее время.');
+    this.reset();
+});
+
+// Newsletter form submission
+document.querySelector('.newsletter-form').addEventListener('submit', function(e) {
+    e.preventDefault();
+    const email = this.querySelector('input[type="email"]').value;
+    
+    if (email) {
+        alert('Спасибо за подписку! Вы будете получать наши новости и специальные предложения.');
+        this.reset();
+    }
+});
+
+// Initialize the page with some default states
+window.addEventListener('load', function() {
+    // Check if there's a hash in the URL and scroll to that section
+    if (window.location.hash) {
+        const target = document.querySelector(window.location.hash);
+        if (target) {
+            setTimeout(() => {
+                window.scrollTo({
+                    top: target.offsetTop - 80,
+                    behavior: 'smooth'
+                });
+            }, 100);
+        }
+    }
+    
+    // Set current year in the footer copyright
+    const yearSpan = document.querySelector('.footer-bottom p');
+    if (yearSpan) {
+        const currentYear = new Date().getFullYear();
+        yearSpan.textContent = yearSpan.textContent.replace('2025', currentYear);
+    }
+});
+</script>    
+</body>
+</html>
